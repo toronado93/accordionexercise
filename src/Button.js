@@ -3,7 +3,7 @@ export function Button(props) {
     <button
       className={props.customclass}
       onClick={() => {
-        props.handler();
+        props.handler(props.id);
       }}
     >
       {props.children}

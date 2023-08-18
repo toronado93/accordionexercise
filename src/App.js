@@ -1,5 +1,6 @@
 import "./App.css";
 import { Accordion } from "./Accordion";
+import { useState } from "react";
 
 function App() {
   const data = [
@@ -33,11 +34,22 @@ function App() {
     },
   ];
 
+  // We give a number
+
+  const [curOpen, setCurOpen] = useState(null);
+
+  function handler(id) {
+    setCurOpen(id);
+  }
+
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
       {data.map((d, _) => {
         return (
           <Accordion
+            handler={handler}
+            parentcontroller={curOpen}
+            controlindex={_}
             key={_}
             title={d.title}
             control={d.control}
